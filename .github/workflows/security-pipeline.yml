@@ -119,7 +119,6 @@ jobs:
     name: OWASP ZAP DAST Scan
     runs-on: ubuntu-latest
     needs: build-and-test
-    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -131,21 +130,24 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r src/requirements.txt
-          pip install django-otp qrcode pillow
+          pip install -r requirements.txt
+          pip install django-otp qrcode pillow django-csp python-decouple
 
       - name: Start Django server
+        env:
+          SECRET_KEY: 'django-insecure-pipeline-test-key-not-for-production'
+          DEBUG: 'True'
         run: |
-          cd src
           python manage.py migrate --run-syncdb
           python manage.py runserver &
-          sleep 8
+          sleep 10
 
       - name: OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
           target: 'http://127.0.0.1:8000'
           cmd_options: '-I'
+          fail_action: false
 
   # ── Stage 5: Pipeline Complete ────────────────────────────────
   pipeline-complete:
