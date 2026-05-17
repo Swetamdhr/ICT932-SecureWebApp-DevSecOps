@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  # ── Stage 1: Build & Unit Tests ───────────────────────────────
+  # Stage 1: Build & Unit Tests
   build-and-test:
     name: Build & Unit Tests
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
           cd src
           python manage.py test --verbosity=2
 
-  # ── Stage 2: SAST Scan (Bandit + Safety) ─────────────────────
+  # Stage 2: SAST Scan (Bandit + Safety)
   sast-scan:
     name: SAST Security Scan
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
           name: bandit-report
           path: bandit-report.txt
 
-  # ── Stage 3: Nikto Web Scan ───────────────────────────────────
+  # Stage 3: Nikto Web Scan
   nikto-scan:
     name: Nikto Web Vulnerability Scan
     runs-on: ubuntu-latest
@@ -114,11 +114,14 @@ jobs:
           name: nikto-report
           path: nikto-report.txt
 
-  # ── Stage 4: OWASP ZAP DAST Scan ─────────────────────────────
+  # Stage 4: OWASP ZAP DAST Scan
   owasp-zap-scan:
     name: OWASP ZAP DAST Scan
     runs-on: ubuntu-latest
     needs: build-and-test
+    permissions:
+      contents: read
+      issues: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -149,7 +152,7 @@ jobs:
           cmd_options: '-I'
           fail_action: false
 
-  # ── Stage 5: Pipeline Complete ────────────────────────────────
+  # Stage 5: Pipeline Complete
   pipeline-complete:
     name: Pipeline Complete
     runs-on: ubuntu-latest
@@ -161,8 +164,8 @@ jobs:
           echo "  DevSecOps Pipeline Completed Successfully"
           echo "============================================"
           echo "  Stages run:"
-          echo "  ✅ Build & Unit Tests"
-          echo "  ✅ SAST Scan (Bandit + Safety)"
-          echo "  ✅ Nikto Web Scan"
-          echo "  ✅ OWASP ZAP DAST Scan"
+          echo "  Build and Unit Tests - PASSED"
+          echo "  SAST Scan - PASSED"
+          echo "  Nikto Web Scan - PASSED"
+          echo "  OWASP ZAP DAST Scan - PASSED"
           echo "============================================"
