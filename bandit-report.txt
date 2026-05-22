@@ -1,0 +1,238 @@
+Run started:2026-05-22 04:23:04.113383+00:00
+
+Test results:
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\accounts\tests.py:62:12
+61	            'username': 'testuser',
+62	            'password': 'wrongpassword'
+63	        })
+64	        self.assertEqual(response.status_code, 200)
+65	        self.assertContains(response, 'attempts remaining')
+66	
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\accounts\tests.py:97:16
+96	                'username': 'testuser',
+97	                'password': 'wrongpassword'
+98	            })
+99	        # 6th attempt should show lockout message
+100	        response = self.client.post(reverse('login'), {
+101	            'username': 'testuser',
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\accounts\tests.py:102:12
+101	            'username': 'testuser',
+102	            'password': 'wrongpassword'
+103	        })
+104	        self.assertContains(response, 'locked')
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'django-insecure-@x--3nv2+1n#!3(seg)!y0tm5mq=&4*+$z^9^@napm6)w%h(qj'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\src\taskmanager\settings.py:23:13
+22	# SECURITY WARNING: keep the secret key used in production secret!
+23	SECRET_KEY = 'django-insecure-@x--3nv2+1n#!3(seg)!y0tm5mq=&4*+$z^9^@napm6)w%h(qj'
+24	
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'SecurePass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:23:20
+22	            username='securitytest',
+23	            password='SecurePass@123'
+24	        )
+25	
+26	    def tearDown(self):
+27	        cache.clear()
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\tests\test_security.py:34:16
+33	                'username': 'securitytest',
+34	                'password': 'wrongpassword'
+35	            })
+36	        response = self.client.post(reverse('login'), {
+37	            'username': 'securitytest',
+38	            'password': 'wrongpassword'
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\tests\test_security.py:38:12
+37	            'username': 'securitytest',
+38	            'password': 'wrongpassword'
+39	        })
+40	        self.assertContains(response, 'locked')
+41	
+42	    def test_failed_attempt_shows_remaining_count(self):
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\tests\test_security.py:46:12
+45	            'username': 'securitytest',
+46	            'password': 'wrongpassword'
+47	        })
+48	        self.assertContains(response, 'attempts remaining')
+49	
+50	    def test_correct_password_after_failed_attempts_works(self):
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'wrongpassword'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\tests\test_security.py:55:12
+54	            'username': 'securitytest',
+55	            'password': 'wrongpassword'
+56	        })
+57	        response = self.client.post(reverse('login'), {
+58	            'username': 'securitytest',
+59	            'password': 'SecurePass@123'
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'SecurePass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: .\tests\test_security.py:59:12
+58	            'username': 'securitytest',
+59	            'password': 'SecurePass@123'
+60	        })
+61	        self.assertEqual(response.status_code, 302)
+62	
+63	
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'TestPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:72:28
+71	            username='regularuser',
+72	            password='TestPass@123'
+73	        )
+74	        self.admin_user = User.objects.create_user(
+75	            username='adminuser',
+76	            password='AdminPass@123'
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'AdminPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:76:26
+75	            username='adminuser',
+76	            password='AdminPass@123'
+77	        )
+78	        self.admin_user.profile.role = 'admin'
+79	        self.admin_user.profile.save()
+80	
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'TestPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:94:8
+93	        """Regular user should be denied access to admin dashboard"""
+94	        self.client.login(username='regularuser', password='TestPass@123')
+95	        response = self.client.get(reverse('admin_dashboard'))
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'AdminPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:100:8
+99	        """Admin user should be able to access admin dashboard"""
+100	        self.client.login(username='adminuser', password='AdminPass@123')
+101	        response = self.client.get(reverse('admin_dashboard'))
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'TestPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:125:20
+124	            username='xsstest',
+125	            password='TestPass@123'
+126	        )
+127	        self.client.login(username='xsstest', password='TestPass@123')
+128	
+129	    def test_script_tag_in_task_title_is_rejected(self):
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'TestPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:127:8
+126	        )
+127	        self.client.login(username='xsstest', password='TestPass@123')
+128	
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'TestPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:167:20
+166	            username='sessiontest',
+167	            password='TestPass@123'
+168	        )
+169	
+170	    def test_login_page_loads(self):
+171	        """Login page should load correctly"""
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'TestPass@123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: .\tests\test_security.py:182:8
+181	        """Logout should redirect user to login page"""
+182	        self.client.login(username='sessiontest', password='TestPass@123')
+183	        response = self.client.get(reverse('logout'))
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 976
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 18
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 18
+		High: 0
+Files skipped (0):
