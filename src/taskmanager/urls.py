@@ -4,7 +4,7 @@ from tasks import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', views.custom_login, name='login'),
     path('logout/', views.custom_logout, name='logout'),
-    path('', include('django.contrib.auth.urls')),
     path('', views.home, name='home'),
 ]
